@@ -1,4 +1,37 @@
-const API_BASE_URL = (process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:8000/api/v1').replace(/\/$/, '');
+/**
+ * Resolves the target API URL for a given endpoint path.
+ *
+ * 1. Server-side in Vercel Functions: Uses the internal service binding `process.env.BACKEND_URL`
+ *    (injected by Vercel Services at runtime, e.g. `await fetch(new URL('api/v1/items', process.env.BACKEND_URL))`).
+ * 2. Explicit public override: Uses `process.env.NEXT_PUBLIC_API_BASE_URL` if defined.
+ * 3. Client-side browser on shared Vercel domain: Uses relative `/api/v1/...` on the same origin.
+ * 4. Local standalone development fallback: Uses `http://127.0.0.1:8000/api/v1/...`.
+ */
+export function resolveApiUrl(path: string): string {
+  const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+  const cleanSubpath = normalizedPath.startsWith('/api/v1')
+    ? normalizedPath.replace(/^\/api\/v1/, '')
+    : normalizedPath;
+
+  if (typeof window === 'undefined' && process.env.BACKEND_URL) {
+    const base = process.env.BACKEND_URL.endsWith('/')
+      ? process.env.BACKEND_URL
+      : `${process.env.BACKEND_URL}/`;
+    const relativePart = cleanSubpath.startsWith('/') ? cleanSubpath.slice(1) : cleanSubpath;
+    return new URL(`api/v1/${relativePart}`, base).toString();
+  }
+
+  if (process.env.NEXT_PUBLIC_API_BASE_URL) {
+    const base = process.env.NEXT_PUBLIC_API_BASE_URL.replace(/\/$/, '');
+    return `${base}${cleanSubpath}`;
+  }
+
+  if (typeof window !== 'undefined') {
+    return `/api/v1${cleanSubpath}`;
+  }
+
+  return `http://127.0.0.1:8000/api/v1${cleanSubpath}`;
+}
 
 export type ApiMeta = {
   source_type: string;
@@ -38,9 +71,10 @@ async function request<T>(path: string, method: 'GET' | 'POST', body?: unknown, 
     if (!token) throw new ApiError(401, 'A demo bearer token is required. Paste one in Settings before this action.');
     headers.Authorization = `Bearer ${token}`;
   }
+  const endpoint = resolveApiUrl(path);
   let response: Response;
   try {
-    response = await fetch(`${API_BASE_URL}${path}`, {
+    response = await fetch(endpoint, {
       method,
       headers,
       body: body === undefined ? undefined : JSON.stringify(body),
@@ -48,7 +82,7 @@ async function request<T>(path: string, method: 'GET' | 'POST', body?: unknown, 
       signal: AbortSignal.timeout(15000),
     });
   } catch (error) {
-    throw new ApiError(0, `Backend unreachable at ${API_BASE_URL}. Start the NeroSentinel service and check its address. ${error instanceof Error ? error.message : ''}`);
+    throw new ApiError(0, `Backend unreachable at ${endpoint}. Start the NeroSentinel service and check its address. ${error instanceof Error ? error.message : ''}`);
   }
   const payload: unknown = await response.json().catch(() => null);
   if (!response.ok) {
