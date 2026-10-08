@@ -1,0 +1,10 @@
+{
+  "info": {"name": "NeroSentinel API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [{"key": "baseUrl", "value": "http://127.0.0.1:8000/api/v1"}],
+  "item": [
+    {"name": "Health", "request": {"method": "GET", "url": "{{baseUrl}}/health"}},
+    {"name": "Dashboard", "request": {"method": "GET", "url": "{{baseUrl}}/dashboard/summary"}},
+    {"name": "Create scenario", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\"name\":\"Deficit demo\",\"rainfall_multiplier\":0.7,\"demand_growth\":0.08}"}, "url": "{{baseUrl}}/scenarios"}},
+    {"name": "Optimize", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\"available_water_mcm\":50,\"preserve_reserve_mcm\":8,\"demand\":{\"domestic_mcm\":12,\"agriculture_mcm\":30,\"industrial_mcm\":8,\"environmental_mcm\":5}}"}, "url": "{{baseUrl}}/optimizations"}}
+  ]
+}

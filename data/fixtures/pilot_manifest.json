@@ -1,0 +1,17 @@
+{
+  "fixture_id": "fixture-tn-v1",
+  "version": "1.0.0",
+  "region": "tn-coimbatore",
+  "status": "synthetic",
+  "license": "CC0-1.0",
+  "generated_for": "offline deterministic demonstration",
+  "observation_period": null,
+  "temporal_profile": "12 synthetic monthly seasonal values; no multi-year observed series",
+  "must_not_be_described_as": ["observed", "live", "official", "validated forecast"],
+  "variables": {
+    "rainfall": {"unit": "mm/month", "basis": "synthetic seasonal profile"},
+    "reservoir_storage": {"unit": "million m3", "basis": "synthetic"},
+    "groundwater_index": {"unit": "dimensionless 0-1", "basis": "synthetic; not volume"},
+    "water_demand": {"unit": "million m3/month", "basis": "synthetic sector profile"}
+  }
+}

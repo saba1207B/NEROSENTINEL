@@ -1,0 +1,2624 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "NeroSentinel API",
+    "description": "Intelligent Water Intelligence & Drought Resilience Platform. Offline-first decision support; demonstration responses are synthetic and never operational instructions.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ready": {
+      "get": {
+        "tags": [
+          "system"
+        ],
+        "summary": "Ready",
+        "operationId": "ready_api_v1_ready_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/regions": {
+      "get": {
+        "tags": [
+          "regions"
+        ],
+        "summary": "Regions",
+        "operationId": "regions_api_v1_regions_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/regions/{region_id}": {
+      "get": {
+        "tags": [
+          "regions"
+        ],
+        "summary": "Region",
+        "operationId": "region_api_v1_regions__region_id__get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/summary": {
+      "get": {
+        "tags": [
+          "dashboard"
+        ],
+        "summary": "Dashboard Summary",
+        "operationId": "dashboard_summary_api_v1_dashboard_summary_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/enso/current": {
+      "get": {
+        "tags": [
+          "enso"
+        ],
+        "summary": "Enso Current",
+        "operationId": "enso_current_api_v1_enso_current_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/enso/history": {
+      "get": {
+        "tags": [
+          "enso"
+        ],
+        "summary": "Enso History",
+        "operationId": "enso_history_api_v1_enso_history_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/enso/teleconnections": {
+      "get": {
+        "tags": [
+          "enso"
+        ],
+        "summary": "Enso Teleconnections",
+        "operationId": "enso_teleconnections_api_v1_enso_teleconnections_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/forecasts": {
+      "get": {
+        "tags": [
+          "forecasts"
+        ],
+        "summary": "Forecasts",
+        "operationId": "forecasts_api_v1_forecasts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/forecasts/backtest": {
+      "post": {
+        "tags": [
+          "forecasts"
+        ],
+        "summary": "Forecast Backtest",
+        "operationId": "forecast_backtest_api_v1_forecasts_backtest_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BacktestRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/sources": {
+      "get": {
+        "tags": [
+          "provenance"
+        ],
+        "summary": "Sources",
+        "operationId": "sources_api_v1_sources_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/ingestion/monthly-csv": {
+      "post": {
+        "tags": [
+          "ingestion"
+        ],
+        "summary": "Ingest Csv",
+        "operationId": "ingest_csv_api_v1_ingestion_monthly_csv_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-Source-ID",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Source-Id"
+            }
+          },
+          {
+            "name": "X-Region-ID",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "X-Region-Id"
+            }
+          },
+          {
+            "name": "X-Synthetic-Data",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": false,
+              "title": "X-Synthetic-Data"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/forecasts/{forecast_id}": {
+      "get": {
+        "tags": [
+          "forecasts"
+        ],
+        "summary": "Forecast",
+        "operationId": "forecast_api_v1_forecasts__forecast_id__get",
+        "parameters": [
+          {
+            "name": "forecast_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Forecast Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/risks": {
+      "get": {
+        "tags": [
+          "risks"
+        ],
+        "summary": "Risks",
+        "operationId": "risks_api_v1_risks_get",
+        "parameters": [
+          {
+            "name": "rainfall_anomaly_pct",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": -100,
+              "default": -28,
+              "title": "Rainfall Anomaly Pct"
+            }
+          },
+          {
+            "name": "soil_moisture_anomaly_pct",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": -100,
+              "default": -22,
+              "title": "Soil Moisture Anomaly Pct"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/risks/compare": {
+      "get": {
+        "tags": [
+          "risks"
+        ],
+        "summary": "Risks Compare",
+        "operationId": "risks_compare_api_v1_risks_compare_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/risks/{region_id}": {
+      "get": {
+        "tags": [
+          "risks"
+        ],
+        "summary": "Risk By Region",
+        "operationId": "risk_by_region_api_v1_risks__region_id__get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/water/balance": {
+      "get": {
+        "tags": [
+          "water"
+        ],
+        "summary": "Water Balance",
+        "operationId": "water_balance_api_v1_water_balance_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/water/demand": {
+      "get": {
+        "tags": [
+          "water"
+        ],
+        "summary": "Water Demand",
+        "operationId": "water_demand_api_v1_water_demand_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reservoirs": {
+      "get": {
+        "tags": [
+          "reservoirs"
+        ],
+        "summary": "Reservoirs",
+        "operationId": "reservoirs_api_v1_reservoirs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reservoirs/{reservoir_id}": {
+      "get": {
+        "tags": [
+          "reservoirs"
+        ],
+        "summary": "Reservoir",
+        "operationId": "reservoir_api_v1_reservoirs__reservoir_id__get",
+        "parameters": [
+          {
+            "name": "reservoir_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reservoir Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reservoirs/{reservoir_id}/forecast": {
+      "get": {
+        "tags": [
+          "reservoirs"
+        ],
+        "summary": "Reservoir Forecast",
+        "operationId": "reservoir_forecast_api_v1_reservoirs__reservoir_id__forecast_get",
+        "parameters": [
+          {
+            "name": "reservoir_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Reservoir Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/groundwater": {
+      "get": {
+        "tags": [
+          "groundwater"
+        ],
+        "summary": "Groundwater",
+        "operationId": "groundwater_api_v1_groundwater_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/groundwater/trends": {
+      "get": {
+        "tags": [
+          "groundwater"
+        ],
+        "summary": "Groundwater Trends",
+        "operationId": "groundwater_trends_api_v1_groundwater_trends_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agriculture/crop-risk": {
+      "get": {
+        "tags": [
+          "agriculture"
+        ],
+        "summary": "Crop Risk",
+        "operationId": "crop_risk_api_v1_agriculture_crop_risk_get",
+        "parameters": [
+          {
+            "name": "crop",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^(paddy|sugarcane|groundnut|millets|pulses)$",
+              "default": "paddy",
+              "title": "Crop"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agriculture/irrigation-scenario": {
+      "post": {
+        "tags": [
+          "agriculture"
+        ],
+        "summary": "Irrigation Scenario",
+        "operationId": "irrigation_scenario_api_v1_agriculture_irrigation_scenario_post",
+        "parameters": [
+          {
+            "name": "temp_min_c",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 22,
+              "title": "Temp Min C"
+            }
+          },
+          {
+            "name": "temp_max_c",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 34,
+              "title": "Temp Max C"
+            }
+          },
+          {
+            "name": "temp_mean_c",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "default": 28,
+              "title": "Temp Mean C"
+            }
+          },
+          {
+            "name": "solar_radiation_mj_m2_day",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "minimum": 0,
+              "default": 18,
+              "title": "Solar Radiation Mj M2 Day"
+            }
+          },
+          {
+            "name": "crop_coefficient",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "maximum": 2.5,
+              "minimum": 0,
+              "default": 1.05,
+              "title": "Crop Coefficient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/agriculture/et0/fao56": {
+      "post": {
+        "tags": [
+          "agriculture"
+        ],
+        "summary": "Fao56 Et0",
+        "operationId": "fao56_et0_api_v1_agriculture_et0_fao56_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Fao56DailyInputs"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios": {
+      "post": {
+        "tags": [
+          "scenarios"
+        ],
+        "summary": "Create Scenario",
+        "operationId": "create_scenario_api_v1_scenarios_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScenarioCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios/{scenario_id}": {
+      "get": {
+        "tags": [
+          "scenarios"
+        ],
+        "summary": "Get Scenario",
+        "operationId": "get_scenario_api_v1_scenarios__scenario_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Scenario Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios/{scenario_id}/run": {
+      "post": {
+        "tags": [
+          "scenarios"
+        ],
+        "summary": "Run Scenario",
+        "operationId": "run_scenario_api_v1_scenarios__scenario_id__run_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Scenario Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios/{scenario_id}/results": {
+      "get": {
+        "tags": [
+          "scenarios"
+        ],
+        "summary": "Scenario Results",
+        "operationId": "scenario_results_api_v1_scenarios__scenario_id__results_get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "scenario_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Scenario Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scenarios/compare": {
+      "post": {
+        "tags": [
+          "scenarios"
+        ],
+        "summary": "Compare Scenarios",
+        "operationId": "compare_scenarios_api_v1_scenarios_compare_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "items": {
+                  "$ref": "#/components/schemas/ScenarioCreate"
+                },
+                "type": "array",
+                "title": "Payload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/scenarios/monte-carlo": {
+      "post": {
+        "tags": [
+          "scenarios"
+        ],
+        "summary": "Run Monte Carlo",
+        "operationId": "run_monte_carlo_api_v1_scenarios_monte_carlo_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MonteCarloRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/optimizations": {
+      "post": {
+        "tags": [
+          "optimization"
+        ],
+        "summary": "Optimize",
+        "operationId": "optimize_api_v1_optimizations_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OptimizationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/optimizations/interventions": {
+      "post": {
+        "tags": [
+          "optimization"
+        ],
+        "summary": "Optimize Interventions",
+        "operationId": "optimize_interventions_api_v1_optimizations_interventions_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InterventionPlanRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/interventions/proposals": {
+      "post": {
+        "tags": [
+          "interventions"
+        ],
+        "summary": "Propose Intervention",
+        "operationId": "propose_intervention_api_v1_interventions_proposals_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProposalCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ]
+      }
+    },
+    "/api/v1/interventions/{proposal_id}": {
+      "get": {
+        "tags": [
+          "interventions"
+        ],
+        "summary": "Intervention Status",
+        "operationId": "intervention_status_api_v1_interventions__proposal_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/interventions/{proposal_id}/approve": {
+      "post": {
+        "tags": [
+          "interventions"
+        ],
+        "summary": "Approve Intervention",
+        "operationId": "approve_intervention_api_v1_interventions__proposal_id__approve_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/interventions/{proposal_id}/action-record": {
+      "post": {
+        "tags": [
+          "interventions"
+        ],
+        "summary": "Record Intervention Action",
+        "operationId": "record_intervention_action_api_v1_interventions__proposal_id__action_record_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActionRecordCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/interventions/{proposal_id}/outcome": {
+      "post": {
+        "tags": [
+          "interventions"
+        ],
+        "summary": "Record Intervention Outcome",
+        "operationId": "record_intervention_outcome_api_v1_interventions__proposal_id__outcome_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "proposal_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Proposal Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OutcomeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/optimizations/{optimization_id}": {
+      "get": {
+        "tags": [
+          "optimization"
+        ],
+        "summary": "Optimization Status",
+        "operationId": "optimization_status_api_v1_optimizations__optimization_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "optimization_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Optimization Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/geospatial/layers": {
+      "get": {
+        "tags": [
+          "geospatial"
+        ],
+        "summary": "Geospatial Layers",
+        "operationId": "geospatial_layers_api_v1_geospatial_layers_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/geospatial/regions/{region_id}": {
+      "get": {
+        "tags": [
+          "geospatial"
+        ],
+        "summary": "Region Geojson",
+        "operationId": "region_geojson_api_v1_geospatial_regions__region_id__get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/alerts": {
+      "get": {
+        "tags": [
+          "alerts"
+        ],
+        "summary": "Alerts",
+        "operationId": "alerts_api_v1_alerts_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/alerts/rules": {
+      "post": {
+        "tags": [
+          "alerts"
+        ],
+        "summary": "Create Alert Rule",
+        "operationId": "create_alert_rule_api_v1_alerts_rules_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "threshold",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Threshold"
+            }
+          },
+          {
+            "name": "cooldown_hours",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 720,
+              "minimum": 1,
+              "default": 24,
+              "title": "Cooldown Hours"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/alerts/{alert_id}/acknowledge": {
+      "post": {
+        "tags": [
+          "alerts"
+        ],
+        "summary": "Acknowledge Alert",
+        "operationId": "acknowledge_alert_api_v1_alerts__alert_id__acknowledge_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "alert_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Alert Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/advisories": {
+      "get": {
+        "tags": [
+          "advisories"
+        ],
+        "summary": "Advisories",
+        "operationId": "advisories_api_v1_advisories_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/advisories/preview": {
+      "post": {
+        "tags": [
+          "advisories"
+        ],
+        "summary": "Advisory Preview",
+        "operationId": "advisory_preview_api_v1_advisories_preview_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdvisoryRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/assistant/query": {
+      "post": {
+        "tags": [
+          "assistant"
+        ],
+        "summary": "Assistant Query",
+        "operationId": "assistant_query_api_v1_assistant_query_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AssistantQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reports": {
+      "post": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Create Report",
+        "operationId": "create_report_api_v1_reports_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "tn-coimbatore",
+              "title": "Region Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reports/{report_id}": {
+      "get": {
+        "tags": [
+          "reports"
+        ],
+        "summary": "Report",
+        "operationId": "report_api_v1_reports__report_id__get",
+        "security": [
+          {
+            "HTTPBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "report_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Report Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/provenance/{artifact_id}": {
+      "get": {
+        "tags": [
+          "provenance"
+        ],
+        "summary": "Provenance",
+        "operationId": "provenance_api_v1_provenance__artifact_id__get",
+        "parameters": [
+          {
+            "name": "artifact_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Artifact Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/models": {
+      "get": {
+        "tags": [
+          "models"
+        ],
+        "summary": "Models",
+        "operationId": "models_api_v1_models_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/models/{model_id}/metrics": {
+      "get": {
+        "tags": [
+          "models"
+        ],
+        "summary": "Model Metrics",
+        "operationId": "model_metrics_api_v1_models__model_id__metrics_get",
+        "parameters": [
+          {
+            "name": "model_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Model Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ActionRecordCreate": {
+        "properties": {
+          "action_reference": {
+            "type": "string",
+            "maxLength": 160,
+            "minLength": 3,
+            "title": "Action Reference"
+          },
+          "recorded_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Recorded At"
+          },
+          "note": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 5,
+            "title": "Note"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "action_reference",
+          "recorded_at",
+          "note"
+        ],
+        "title": "ActionRecordCreate"
+      },
+      "AdvisoryRequest": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id",
+            "default": "tn-coimbatore"
+          },
+          "audience": {
+            "type": "string",
+            "title": "Audience",
+            "default": "households"
+          },
+          "language": {
+            "type": "string",
+            "pattern": "^(en|ta|hi)$",
+            "title": "Language",
+            "default": "en"
+          },
+          "severity": {
+            "$ref": "#/components/schemas/Severity",
+            "default": "moderate"
+          },
+          "timeframe": {
+            "type": "string",
+            "title": "Timeframe",
+            "default": "next 30 days"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "AdvisoryRequest"
+      },
+      "AssistantQuery": {
+        "properties": {
+          "question": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 3,
+            "title": "Question"
+          },
+          "region_id": {
+            "type": "string",
+            "title": "Region Id",
+            "default": "tn-coimbatore"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "question"
+        ],
+        "title": "AssistantQuery"
+      },
+      "BacktestRequest": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id",
+            "default": "tn-coimbatore"
+          },
+          "source_id": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 3,
+            "title": "Source Id"
+          },
+          "observations": {
+            "items": {
+              "$ref": "#/components/schemas/MonthlyForecastPoint"
+            },
+            "type": "array",
+            "maxItems": 1200,
+            "minItems": 30,
+            "title": "Observations"
+          },
+          "min_train": {
+            "type": "integer",
+            "minimum": 24.0,
+            "title": "Min Train",
+            "default": 24
+          },
+          "synthetic": {
+            "type": "boolean",
+            "title": "Synthetic",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_id",
+          "observations"
+        ],
+        "title": "BacktestRequest"
+      },
+      "Fao56DailyInputs": {
+        "properties": {
+          "temp_min_c": {
+            "type": "number",
+            "maximum": 60.0,
+            "minimum": -80.0,
+            "title": "Temp Min C"
+          },
+          "temp_max_c": {
+            "type": "number",
+            "maximum": 60.0,
+            "minimum": -80.0,
+            "title": "Temp Max C"
+          },
+          "temp_mean_c": {
+            "type": "number",
+            "maximum": 60.0,
+            "minimum": -80.0,
+            "title": "Temp Mean C"
+          },
+          "net_radiation_mj_m2_day": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Net Radiation Mj M2 Day"
+          },
+          "soil_heat_flux_mj_m2_day": {
+            "type": "number",
+            "title": "Soil Heat Flux Mj M2 Day",
+            "default": 0
+          },
+          "wind_speed_2m_m_s": {
+            "type": "number",
+            "maximum": 100.0,
+            "minimum": 0.0,
+            "title": "Wind Speed 2M M S"
+          },
+          "actual_vapour_pressure_kpa": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Actual Vapour Pressure Kpa"
+          },
+          "atmospheric_pressure_kpa": {
+            "type": "number",
+            "maximum": 110.0,
+            "minimum": 50.0,
+            "title": "Atmospheric Pressure Kpa"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "temp_min_c",
+          "temp_max_c",
+          "temp_mean_c",
+          "net_radiation_mj_m2_day",
+          "wind_speed_2m_m_s",
+          "actual_vapour_pressure_kpa",
+          "atmospheric_pressure_kpa"
+        ],
+        "title": "Fao56DailyInputs"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "InterventionOption": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "pattern": "^(conservation|leakage_reduction|emergency_supply)$",
+            "title": "Kind"
+          },
+          "intensity": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Intensity"
+          },
+          "cost_million_inr": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Cost Million Inr"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "kind",
+          "intensity",
+          "cost_million_inr"
+        ],
+        "title": "InterventionOption"
+      },
+      "InterventionPlanRequest": {
+        "properties": {
+          "scenario": {
+            "$ref": "#/components/schemas/ScenarioCreate"
+          },
+          "budget_million_inr": {
+            "anyOf": [
+              {
+                "type": "number",
+                "minimum": 0.0
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Budget Million Inr"
+          },
+          "options": {
+            "items": {
+              "$ref": "#/components/schemas/InterventionOption"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Options"
+          },
+          "rainfall_cases": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "maxItems": 5,
+            "minItems": 1,
+            "title": "Rainfall Cases"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario",
+          "budget_million_inr",
+          "options",
+          "rainfall_cases"
+        ],
+        "title": "InterventionPlanRequest"
+      },
+      "MonteCarloRequest": {
+        "properties": {
+          "scenario": {
+            "$ref": "#/components/schemas/ScenarioCreate"
+          },
+          "iterations": {
+            "type": "integer",
+            "maximum": 5000.0,
+            "minimum": 20.0,
+            "title": "Iterations",
+            "default": 250
+          },
+          "rainfall_std_fraction": {
+            "type": "number",
+            "maximum": 1.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Rainfall Std Fraction",
+            "default": 0.15
+          },
+          "demand_std_fraction": {
+            "type": "number",
+            "maximum": 1.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Demand Std Fraction",
+            "default": 0.08
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "scenario"
+        ],
+        "title": "MonteCarloRequest"
+      },
+      "MonthlyForecastPoint": {
+        "properties": {
+          "month": {
+            "type": "string",
+            "format": "date",
+            "title": "Month"
+          },
+          "rainfall_mm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Rainfall Mm"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "month",
+          "rainfall_mm"
+        ],
+        "title": "MonthlyForecastPoint"
+      },
+      "OptimizationRequest": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id",
+            "default": "tn-coimbatore"
+          },
+          "available_water_mcm": {
+            "type": "number",
+            "exclusiveMinimum": 0.0,
+            "title": "Available Water Mcm"
+          },
+          "demand": {
+            "$ref": "#/components/schemas/SectorDemand"
+          },
+          "budget_million_inr": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Budget Million Inr",
+            "default": 100
+          },
+          "preserve_reserve_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Preserve Reserve Mcm",
+            "default": 10
+          },
+          "minimum_domestic_fraction": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Minimum Domestic Fraction",
+            "default": 0.9
+          },
+          "minimum_environmental_fraction": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Minimum Environmental Fraction",
+            "default": 0.6
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "available_water_mcm",
+          "demand"
+        ],
+        "title": "OptimizationRequest"
+      },
+      "OutcomeCreate": {
+        "properties": {
+          "observed_unmet_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Observed Unmet Mcm"
+          },
+          "observation_source_id": {
+            "type": "string",
+            "maxLength": 80,
+            "minLength": 3,
+            "title": "Observation Source Id"
+          },
+          "measured_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Measured At"
+          },
+          "synthetic": {
+            "type": "boolean",
+            "title": "Synthetic",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "observed_unmet_mcm",
+          "observation_source_id",
+          "measured_at"
+        ],
+        "title": "OutcomeCreate"
+      },
+      "ProposalCreate": {
+        "properties": {
+          "plan_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Plan Id"
+          },
+          "responsible_authority": {
+            "type": "string",
+            "maxLength": 120,
+            "minLength": 3,
+            "title": "Responsible Authority"
+          },
+          "review_by": {
+            "type": "string",
+            "format": "date",
+            "title": "Review By"
+          },
+          "rationale": {
+            "type": "string",
+            "maxLength": 1000,
+            "minLength": 10,
+            "title": "Rationale"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "plan_id",
+          "responsible_authority",
+          "review_by",
+          "rationale"
+        ],
+        "title": "ProposalCreate"
+      },
+      "ScenarioCreate": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 3,
+            "title": "Name"
+          },
+          "region_id": {
+            "type": "string",
+            "title": "Region Id",
+            "default": "tn-coimbatore"
+          },
+          "months": {
+            "type": "integer",
+            "maximum": 120.0,
+            "minimum": 1.0,
+            "title": "Months",
+            "default": 12
+          },
+          "rainfall_multiplier": {
+            "type": "number",
+            "maximum": 3.0,
+            "minimum": 0.0,
+            "title": "Rainfall Multiplier",
+            "default": 1
+          },
+          "temperature_delta_c": {
+            "type": "number",
+            "maximum": 10.0,
+            "minimum": -5.0,
+            "title": "Temperature Delta C",
+            "default": 0
+          },
+          "demand_growth": {
+            "type": "number",
+            "maximum": 3.0,
+            "minimum": -0.5,
+            "title": "Demand Growth",
+            "default": 0
+          },
+          "leakage_reduction": {
+            "type": "number",
+            "maximum": 0.9,
+            "minimum": 0.0,
+            "title": "Leakage Reduction",
+            "default": 0
+          },
+          "conservation": {
+            "type": "number",
+            "maximum": 0.8,
+            "minimum": 0.0,
+            "title": "Conservation",
+            "default": 0
+          },
+          "pumping_restriction": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Pumping Restriction",
+            "default": 0
+          },
+          "emergency_supply_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Emergency Supply Mcm",
+            "default": 0
+          },
+          "seed": {
+            "type": "integer",
+            "title": "Seed",
+            "default": 42
+          },
+          "start_month": {
+            "type": "string",
+            "format": "date",
+            "title": "Start Month",
+            "default": "2026-01-01"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "ScenarioCreate"
+      },
+      "SectorDemand": {
+        "properties": {
+          "domestic_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Domestic Mcm"
+          },
+          "agriculture_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Agriculture Mcm"
+          },
+          "industrial_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Industrial Mcm"
+          },
+          "environmental_mcm": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Environmental Mcm"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "domestic_mcm",
+          "agriculture_mcm",
+          "industrial_mcm",
+          "environmental_mcm"
+        ],
+        "title": "SectorDemand"
+      },
+      "Severity": {
+        "type": "string",
+        "enum": [
+          "low",
+          "moderate",
+          "high",
+          "critical"
+        ],
+        "title": "Severity"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "HTTPBearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}

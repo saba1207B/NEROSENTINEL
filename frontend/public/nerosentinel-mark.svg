@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" role="img" aria-labelledby="title">
+  <title id="title">NeroSentinel water mark</title>
+  <circle cx="256" cy="256" r="249" stroke="#01472e" stroke-width="6" />
+  <circle cx="256" cy="256" r="201" stroke="#01472e" stroke-width="6" />
+  <circle cx="256" cy="256" r="145" stroke="#01472e" stroke-width="6" />
+  <path d="M256 126c-20 23-42 43-58 62-27 31-39 64-39 99 0 58 43 106 97 106s97-48 97-106c0-35-12-68-39-99-16-19-38-39-58-62Z" fill="#d5a51d" />
+</svg>

@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nerosentinel"
+version = "0.1.0"
+description = "Offline-first, scientifically explicit water intelligence backend"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi==0.115.12",
+  "uvicorn[standard]==0.34.2",
+  "pydantic==2.11.4",
+  "pydantic-settings==2.9.1",
+  "sqlalchemy==2.0.41",
+  "psycopg[binary]==3.2.9",
+  "alembic==1.15.2",
+  "PyJWT==2.10.1",
+  "python-multipart==0.0.20",
+  "numpy==2.2.5",
+  "scipy==1.15.3",
+  "networkx==3.4.2",
+  "httpx==0.28.1",
+  "prometheus-client==0.21.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.5", "pytest-cov==6.1.1", "hypothesis==6.131.9", "ruff==0.11.9"]
+geo = ["geoalchemy2==0.17.1", "shapely==2.1.0"]
+ml = ["pandas==2.2.3", "scikit-learn==1.6.1", "xgboost==3.0.0", "shap==0.47.2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aquasentinel"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

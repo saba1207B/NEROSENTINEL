@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" fill="none">
+  <defs><linearGradient id="sky" x1="450" y1="0" x2="450" y2="1100" gradientUnits="userSpaceOnUse"><stop stop-color="#E9EDC9"/><stop offset="1" stop-color="#A3B18A"/></linearGradient><linearGradient id="water" x1="454" y1="486" x2="454" y2="914" gradientUnits="userSpaceOnUse"><stop stop-color="#507A5A"/><stop offset="1" stop-color="#01472E"/></linearGradient></defs>
+  <rect width="900" height="1100" rx="54" fill="url(#sky)"/><circle cx="706" cy="204" r="100" fill="#FEFAE0" fill-opacity=".75"/>
+  <path d="M0 418C122 368 212 367 316 416C425 467 525 451 615 380C714 306 803 312 900 355V1100H0V418Z" fill="#A3B18A"/>
+  <path d="M0 532C129 472 239 489 346 550C449 609 551 578 645 509C733 444 817 447 900 488V1100H0V532Z" fill="#527453"/>
+  <path d="M0 650C137 584 238 593 355 661C468 727 567 692 676 623C761 570 832 579 900 617V1100H0V650Z" fill="url(#water)"/>
+  <path d="M-10 760C133 692 269 718 376 780C487 844 610 803 720 739C799 693 851 699 915 733" stroke="#FEFAE0" stroke-opacity=".75" stroke-width="8"/>
+  <path d="M-10 833C130 768 266 789 383 854C494 917 616 878 725 814C799 771 853 776 915 809" stroke="#CCD5AE" stroke-opacity=".8" stroke-width="5"/>
+  <path d="M-10 909C135 842 269 864 391 927C508 988 618 952 731 889C804 849 858 852 915 883" stroke="#FEFAE0" stroke-opacity=".36" stroke-width="3"/>
+</svg>
