@@ -13,10 +13,11 @@ export function resolveApiUrl(path: string): string {
     ? normalizedPath.replace(/^\/api\/v1/, '')
     : normalizedPath;
 
-  if (typeof window === 'undefined' && process.env.BACKEND_URL) {
-    const base = process.env.BACKEND_URL.endsWith('/')
-      ? process.env.BACKEND_URL
-      : `${process.env.BACKEND_URL}/`;
+  const internalBase = process.env.APP_URL || process.env.BACKEND_URL;
+  if (typeof window === 'undefined' && internalBase) {
+    const base = internalBase.endsWith('/')
+      ? internalBase
+      : `${internalBase}/`;
     const relativePart = cleanSubpath.startsWith('/') ? cleanSubpath.slice(1) : cleanSubpath;
     return new URL(`api/v1/${relativePart}`, base).toString();
   }

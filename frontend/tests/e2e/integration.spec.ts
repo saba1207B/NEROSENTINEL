@@ -1,6 +1,11 @@
 import { expect, test } from '@playwright/test';
 
-const apiBase = process.env.AQUASENTINEL_API_URL || 'http://127.0.0.1:8000/api/v1';
+const apiBase = (
+  process.env.AQUASENTINEL_API_URL ||
+  (process.env.APP_URL ? new URL('api/v1', process.env.APP_URL).toString().replace(/\/$/, '') : undefined) ||
+  (process.env.BACKEND_URL ? new URL('api/v1', process.env.BACKEND_URL).toString().replace(/\/$/, '') : undefined) ||
+  'http://127.0.0.1:8000/api/v1'
+);
 const appAlert = (page: import('@playwright/test').Page) => page.locator('[role="alert"]:not(#__next-route-announcer__)');
 
 test('production pages hydrate real synthetic pilot data', async ({ page }) => {

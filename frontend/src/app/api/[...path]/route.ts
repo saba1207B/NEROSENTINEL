@@ -7,8 +7,8 @@ async function forwardRequest(
   context: { params: Promise<{ path: string[] }> }
 ) {
   const { path } = await context.params;
-  // Use Vercel runtime service binding BACKEND_URL, with local fallback for standalone development
-  const backendBase = process.env.BACKEND_URL || 'http://127.0.0.1:8000';
+  // Use Vercel runtime service binding APP_URL / BACKEND_URL, with local fallback for standalone development
+  const backendBase = process.env.APP_URL || process.env.BACKEND_URL || 'http://127.0.0.1:8000';
 
   // FastAPI routes in NeroSentinel are mounted under /api/...
   const subpath = path.join('/');

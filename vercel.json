@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "services": {
-    "backend": {
+    "app": {
       "root": ".",
       "framework": "fastapi",
       "entrypoint": "main:app"
@@ -12,9 +12,9 @@
       "bindings": [
         {
           "type": "service",
-          "service": "backend",
+          "service": "app",
           "format": "url",
-          "env": "BACKEND_URL"
+          "env": "APP_URL"
         }
       ]
     }
@@ -23,7 +23,7 @@
     {
       "source": "/api/(.*)",
       "destination": {
-        "service": "backend"
+        "service": "app"
       }
     },
     {
