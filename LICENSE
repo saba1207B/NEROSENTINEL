@@ -1,21 +1,29 @@
-MIT License
+Copyright (c) 2026 Sabareesh M (saba1207B). All Rights Reserved.
 
-Copyright (c) 2026 Sabareesh M
+STRICT COPYRIGHT NOTICE — ALL RIGHTS RESERVED
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository and all of its contents (including but not limited to source code, documentation, screenshots, images, and any other files) are the exclusive intellectual property of Sabareesh M.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+NO LICENSE IS GRANTED TO THE PUBLIC.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+You may NOT, under any circumstances:
+
+Copy, reproduce, distribute, or publicly display any part of this work.
+
+Modify, adapt, translate, or create derivative works based on this work.
+
+Use this work (or any portion of it) for any commercial purpose.
+
+Redistribute this work in any form (including sharing with others, uploading elsewhere, or including it in another repository).
+
+Include this work, or any substantial portion of it, in any dataset, training corpus, fine-tuning set, or evaluation set for any artificial intelligence, machine learning, large language model, or generative AI system.
+
+Scrape, crawl, or automatically download this repository or its contents for the purpose of AI/ML training, data mining, or model development.
+
+Use this work to train, fine-tune, evaluate, or improve any AI system.
+
+Any use or redistribution of this work without the prior written permission of the copyright holder is strictly prohibited and constitutes copyright infringement.
+
+For permission requests, contact the copyright holder via GitHub: @saba1207B
+
+This notice applies worldwide and remains in effect indefinitely.

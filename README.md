@@ -1,3 +1,22 @@
+⚠️ STRICT COPYRIGHT NOTICE — ALL RIGHTS RESERVED
+Copyright © 2026 Sabareesh M (saba1207B)
+
+This repository is NOT open source.
+Unauthorized copying, redistribution, modification, or use of any code, text, or materials from this repository is strictly prohibited.
+
+Especially forbidden:
+
+Copying or adapting any program/project for submission as your own work
+
+Sharing or redistributing the code
+
+Using any content for AI / machine learning training or generation
+
+This repository is public only so that authorized mentors can review progress.
+Full legal terms: LICENSE | COPYRIGHT | AI_INSTRUCTION.md
+
+---
+
 # NeroSentinel · Intelligent Water Intelligence & Drought Resilience Platform
 
 An offline-first FastAPI decision-support backend for a synthetic Tamil Nadu water-resilience pilot. V2 adds explicit physical units, corrected reservoir accounting, local data quarantine, leakage-safe baseline evaluation, FAO-56 ET0, budgeted intervention search and authorization gates.

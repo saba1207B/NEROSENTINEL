@@ -1,3 +1,15 @@
+/*
+Copyright (c) 2026 Sabareesh M (saba1207B). All Rights Reserved.
+
+This source code is proprietary and confidential.
+
+Unauthorized copying, redistribution, modification, or use — including
+any use for artificial intelligence / machine learning training —
+is strictly prohibited.
+
+See the LICENSE and COPYRIGHT files in the repository root for full terms.
+*/
+
 // Generated from the verified FastAPI OpenAPI schema. Do not edit by hand.
 export type ActionRecordCreate = { action_reference: string; recorded_at: string; note: string; };
 export type AdvisoryRequest = { region_id?: string; audience?: string; language?: string; severity?: Severity; timeframe?: string; };
