@@ -1,3 +1,5 @@
+<!-- Copyright (c) 2026 Sabareesh M (saba1207B). All Rights Reserved. -->
+<!-- No public license is granted for original work. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 800">
 <defs><linearGradient id="b" x2="1" y2="1"><stop stop-color="#422351"/><stop offset="1" stop-color="#a9518a"/></linearGradient><linearGradient id="p" x2="0" y2="1"><stop stop-color="#ffc5db" stop-opacity=".55"/><stop offset="1" stop-color="#ffc5db" stop-opacity="0"/></linearGradient></defs>
 <rect width="1080" height="800" fill="url(#b)"/><circle cx="950" cy="100" r="220" fill="#ffb3da" opacity=".1"/><rect x="100" y="120" width="880" height="550" rx="30" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".23"/>

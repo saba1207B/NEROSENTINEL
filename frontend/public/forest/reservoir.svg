@@ -1,3 +1,5 @@
+<!-- Copyright (c) 2026 Sabareesh M (saba1207B). All Rights Reserved. -->
+<!-- No public license is granted for original work. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" fill="none">
   <defs><linearGradient id="sky" x1="450" y1="0" x2="450" y2="1100" gradientUnits="userSpaceOnUse"><stop stop-color="#E9EDC9"/><stop offset="1" stop-color="#A3B18A"/></linearGradient><linearGradient id="water" x1="454" y1="486" x2="454" y2="914" gradientUnits="userSpaceOnUse"><stop stop-color="#507A5A"/><stop offset="1" stop-color="#01472E"/></linearGradient></defs>
   <rect width="900" height="1100" rx="54" fill="url(#sky)"/><circle cx="706" cy="204" r="100" fill="#FEFAE0" fill-opacity=".75"/>
